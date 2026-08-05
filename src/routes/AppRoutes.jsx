@@ -18,6 +18,8 @@ import DoctorDashboard from '../pages/doctor/DoctorDashboard';
 // Admin pages
 import AdminDashboard from '../pages/admin/AdminDashboard';
 
+import DashboardLayout from '../layouts/DashboardLayout';
+
 const AppRoutes = () => {
   return (
     <Routes>
