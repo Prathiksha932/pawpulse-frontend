@@ -1,0 +1,1 @@
+export const submitFeedback = (data) => axiosClient.post('/feedback', data).then((r) => r.data.data);

@@ -11,14 +11,19 @@ const DashboardLayout = () => {
   };
 
   const navLinksByRole = {
-    owner: [
-      { to: '/owner/dashboard', label: 'Dashboard' },
-      { to: '/owner/animals', label: 'My Animals' },
-    ],
-    doctor: [{ to: '/doctor/dashboard', label: 'Dashboard' }],
-    clinic_admin: [{ to: '/admin/dashboard', label: 'Dashboard' }],
-    super_admin: [{ to: '/admin/dashboard', label: 'Dashboard' }],
-  };
+  owner: [
+    { to: '/owner/dashboard', label: 'Dashboard' },
+    { to: '/owner/animals', label: 'My Animals' },
+    { to: '/owner/book-appointment', label: 'Book Appointment' },
+    { to: '/owner/appointments', label: 'My Appointments' },
+  ],
+  doctor: [
+    { to: '/doctor/dashboard', label: 'Dashboard' },
+    { to: '/doctor/profile-setup', label: 'Profile Setup' },
+  ],
+  clinic_admin: [{ to: '/admin/dashboard', label: 'Dashboard' }],
+  super_admin: [{ to: '/admin/dashboard', label: 'Dashboard' }],
+};
 
   const links = navLinksByRole[user?.role] || [];
 

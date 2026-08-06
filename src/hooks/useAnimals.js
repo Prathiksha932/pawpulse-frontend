@@ -27,3 +27,9 @@ export const useDeleteAnimal = () => {
     },
   });
 };
+export const useMedicalHistory = (animalId) =>
+  useQuery({
+    queryKey: ['medicalHistory', animalId],
+    queryFn: () => getMedicalHistory(animalId),
+    enabled: !!animalId,
+  });
