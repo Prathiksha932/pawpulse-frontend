@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import { getDoctors, getAvailability } from '../api/doctorApi';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { getDoctors, getAvailability, createDoctorProfile, getMyDoctorProfile, updateDoctorProfile } from '../api/doctorApi';
 
 export const useDoctors = () => useQuery({ queryKey: ['doctors'], queryFn: getDoctors });
 
@@ -14,3 +14,8 @@ import { createDoctorProfile } from '../api/doctorApi';
 
 export const useCreateDoctorProfile = () =>
   useMutation({ mutationFn: createDoctorProfile });
+export const useMyDoctorProfile = () =>
+  useQuery({ queryKey: ['myDoctorProfile'], queryFn: getMyDoctorProfile, retry: false });
+
+export const useUpdateDoctorProfile = () =>
+  useMutation({ mutationFn: updateDoctorProfile });

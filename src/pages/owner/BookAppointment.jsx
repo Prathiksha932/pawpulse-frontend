@@ -64,7 +64,12 @@ const BookAppointment = () => {
 
         <div>
           <label className="mb-1 block text-sm font-medium text-gray-700">Date</label>
-          <input type="date" {...register('appointmentDate', { required: true })} className="w-full rounded-lg border px-3 py-2" />
+         <input
+  type="date"
+  min={new Date().toISOString().split('T')[0]}
+  {...register('appointmentDate', { required: true })}
+  className="w-full rounded-lg border px-3 py-2"
+/>
         </div>
 
         {selectedDoctorId && selectedDate && (

@@ -12,6 +12,7 @@ const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSubmit = async (formData) => {
+    console.log('FORM SUBMITTED', formData); // temporary debug line
     setServerError('');
     setIsSubmitting(true);
     try {

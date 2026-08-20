@@ -33,6 +33,20 @@ axiosClient.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
+    // If the request that just failed is itself an auth-flow endpoint
+    // (login, register, or refresh-token), don't attempt to auto-refresh.
+    // A 401 from these means "invalid credentials" or "no session yet" —
+    // NOT "an authenticated request's token expired." Auto-refreshing here
+    // would mask the real error and/or loop forever.
+    const isAuthEndpoint =
+      originalRequest?.url?.includes('/auth/refresh-token') ||
+      originalRequest?.url?.includes('/auth/login') ||
+      originalRequest?.url?.includes('/auth/register');
+
+    if (isAuthEndpoint) {
+      return Promise.reject(error);
+    }
+
     if (error.response?.status === 401 && !originalRequest._retry) {
       if (isRefreshing) {
         return new Promise((resolve) => {
